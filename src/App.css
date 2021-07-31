@@ -15,13 +15,14 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  //min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  padding-top: 58px;
 }
 
 .App-link {
@@ -35,4 +36,29 @@
   to {
     transform: rotate(360deg);
   }
+}
+.cs-main-container, .cs-chat-container, .cs-message-list{
+  background-color: transparent;
+}
+
+
+.videosContainer{
+  display: flex;
+  background-color: #282c34;
+  width: 100%;
+  height: calc(100vh - 140px);
+  margin-top: 90px;
+  margin-bottom: 50px;
+  overflow: hidden;
+}
+.videosContainer > div {
+  flex: 1;
+  flex-basis: 33.3%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+video{
+max-height: 100%;
 }
