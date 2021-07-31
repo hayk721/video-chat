@@ -10,5 +10,10 @@ function Video({name, stream}: { name: string, stream:MediaStream}) {
         <video ref={video}  autoPlay={true}/>
     </div>)
 }
+function VideoContainer({streams}: { streams:{ stream: MediaStream, name: string }[] }) {
+    return (<div className="videosContainer">
+            {streams.map((s, i) => <Video key={s.name} name={s.name} stream={s.stream}/>)}
+        </div>)
+}
 
-export default Video
+export default React.memo(VideoContainer)

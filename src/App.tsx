@@ -4,7 +4,7 @@ import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import {MainContainer, ChatContainer, Avatar, VoiceCallButton, VideoCallButton, ConversationHeader, MessageList, Message, MessageInput} from '@chatscope/chat-ui-kit-react';
 import './App.css';
 import VideoService from './video-service'
-import Video from "./Video";
+import VideoContainer from "./Video";
 
 function App() {
     const [streams, setStreams] = useState<{ stream:MediaStream, name:string }[]>([])
@@ -12,6 +12,7 @@ function App() {
     const [destPeerId, setDestPeerId] = useState('')
     const [messages, setMessages] = useState<{ message: string, sendTime: string, sender: string, direction: 'incoming' | 'outgoing' }[]>([])
     const [message, setMessage] = useState('bp')
+    let msg: string = '';
     const vs = useRef(VideoService);
     useEffect(() => {
         console.log('rerendered')
@@ -63,7 +64,7 @@ function App() {
     const sendMessage = () => {
         vs.current.sendData(destPeerId, message)
         setMessages(m => [...m, {
-            message: message,
+            message: msg,
             sendTime: '09:56',
             sender: peerId,
             direction: 'outgoing',
@@ -88,9 +89,7 @@ function App() {
     }
     return (
         <div className="App">
-            <div className="videosContainer">
-                {streams.map((s, i) => <Video key={s.name} name={s.name} stream={s.stream}/>)}
-            </div>
+            <VideoContainer streams={streams}/>
             <div style={{position: "absolute", top: 0, left:0, width:'100%', height:'100%'}}>
                 <MainContainer>
 
@@ -114,7 +113,7 @@ function App() {
                         <MessageList>
                             {messages.map((m, index) => <Message key={index} model={m}/>)}
                         </MessageList>
-                        <MessageInput placeholder="Type message here" onChange={(e: React.SetStateAction<string>) => setMessage(e)}
+                        <MessageInput placeholder="Type message here" onChange={(e: React.SetStateAction<string>) =>( msg = e as string)}
                                       onSend={sendMessage}/>
                     </ChatContainer>
                 </MainContainer>
