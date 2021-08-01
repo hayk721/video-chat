@@ -40,25 +40,146 @@
 .cs-main-container, .cs-chat-container, .cs-message-list{
   background-color: transparent;
 }
+.cs-main-container{
 
-
-.videosContainer{
-  display: flex;
-  background-color: #282c34;
-  width: 100%;
-  height: calc(100vh - 140px);
-  margin-top: 90px;
-  margin-bottom: 50px;
-  overflow: hidden;
+  align-items: flex-start;
 }
-.videosContainer > div {
-  flex: 1;
-  flex-basis: 33.3%;
-  overflow: hidden;
+.cs-main-container .cs-chat-container {
+  order: 1;
+  z-index: 1;
+  flex-grow: 1;
+  flex-basis: 25%;
+  border-right: solid 0px #d1dbe4;
+  background-color: #edf0f5;
+  margin: 10px;
+  border-radius: 15px;
+}
+.cs-chat-container .cs-message-input{
+  border-top: none;
+  background-color: transparent;
+}
+.cs-message-input__content-editor-wrapper{
+  background-color: #ffffff;
+  box-shadow: 0px 1px 11px #80808026;
+}
+.cs-message-input__content-editor {
+  background-color: #ffffff;
+}
+.videosBlock {
+  flex: 2;
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  flex-basis: 75%;
+}
+.videosContainer{
+  flex: 2;
+  flex-grow: 2;
+   align-items: stretch;
+}
+
+.videoWrapper{
+  /* border: 16px solid black; */
+  position: relative;
+  /* display: none; */
+  height: 100%;
+}
+
+video{
+  border-radius: 15px;
+  width: 100%;
+  height: 100%;
+}
+.control-btns{
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
   display: flex;
   justify-content: center;
-  flex-direction: column;
+  align-items: center;
 }
-video{
-max-height: 100%;
+.header-btns{
+  position: absolute;
+  top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+
+}
+.header-btns > div, .header-btns > button{
+  margin: 0 20px;
+}
+.header-btns .avatar-block{
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+}
+.header-btns .avatar-block > img{
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.header-btns .avatar-block  p{
+  margin: 0px;
+  font-size: 14px;
+  color: white;
+  padding: 0 8px;
+  text-align: left;
+  font-weight: bold;
+
+}
+.header-btns .avatar-block  p:first-child{
+  font-size: 12px;
+  font-weight: normal;
+}
+.header-btns .timer{
+  border-radius: 15px;
+  height: 50px;
+  width: 120px;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+}
+.header-btns .peers-block{
+  width: 80px;
+}
+.header-btns .peers-block .peer{
+  border-radius: 20px;
+  border: 3px solid white;
+
+}
+
+.control-btn{
+  width: 50px;
+  height: 50px;
+  margin: 0 10px;
+}
+.control-btn.deny{
+  background-color: rgb(241 83 82 / 89%);
+  border-radius: 25px;
+  width: 60px;
+  height: 60px;
+  box-shadow: 1px 1px 11px 5px #f15352fc inset, 0px 0px 6px 2px #f153525e;
+}
+
+.deny img {
+  width: 40%;
+  height: 40%;
+}
+.control-btn img{
+  width: 50%;
+  height: 50%;
+  filter: invert(1);
+}
+.blur-block{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ababab47;
+  border-radius: 50%;
+  backdrop-filter: blur(5px);
+  outline: none;
+  border: none;
 }
