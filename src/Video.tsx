@@ -21,7 +21,7 @@ function Video({name, stream, myStream, toggleCamera, toggleAudio}: {
     useEffect(() => {
         video.current && stream && (video.current.srcObject = stream);
         myVideo.current && myStream && (myVideo.current.srcObject = myStream);
-    })
+    },[video, stream, myStream])
     const toggleSound = () => {
         toggleAudio(name)
         setSound(!sound)
@@ -77,7 +77,7 @@ function VideoContainer({peers, toggleCamera, toggleAudio, children}: VideoConta
     return (<div className="videosBlock">
         {/*{children}*/}
         <div className="videosContainer" >
-            {peers.map((s, i) => <Video key={s.id} name={s.id} stream={s.mediaStream} myStream={s.myMediaStream}  toggleCamera={toggleCamera} toggleAudio={toggleAudio}/> ) }
+            {peers.map((s, i) => <MVideo key={s.id} name={s.id} stream={s.mediaStream} myStream={s.myMediaStream}  toggleCamera={toggleCamera} toggleAudio={toggleAudio}/> ) }
         </div>
         <div><p>hello</p></div>
        </div>)

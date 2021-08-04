@@ -16,9 +16,9 @@ class VideoService {
 
     constructor() {
         this.peer = new Peer(undefined, {
-            host: 'localhost',
+           /* host: 'localhost',
             port: 9000,
-            path: '/myapp',
+            path: '/myapp',*/
             debug: 2
         })
         this.initPeer();
