@@ -21,7 +21,7 @@ function Video({name, stream, myStream, toggleCamera, toggleAudio}: {
     useEffect(() => {
         video.current && stream && (video.current.srcObject = stream);
         myVideo.current && myStream && (myVideo.current.srcObject = myStream);
-    },[video, stream, myStream])
+    },)
     const toggleSound = () => {
         toggleAudio(name)
         setSound(!sound)
