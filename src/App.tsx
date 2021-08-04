@@ -106,6 +106,13 @@ function App() {
         }])
 
     }
+    const  copyingToClipboard = () => {
+        navigator.clipboard.writeText(peerId).then(function() {
+            console.log('Async: Copying to clipboard was successful!');
+        }, function(err) {
+            console.error('Async: Could not copy text: ', err);
+        });
+    }
     return (
         <div className="App">
             <div style={{position: "absolute", top: 0, left:0, width:'100%', height:'100%'}}>
@@ -155,12 +162,12 @@ function App() {
                             <div>
 
                                 <input type="text" onChange={(e) => setDestPeerId(e.target.value)}/>
-                                <button onClick={connectToPeer}> call</button>
+                                {/*<button onClick={connectToPeer}> call</button>*/}
                             </div>
                         </ConversationHeader.Content>
                         <ConversationHeader.Actions>
-                            <VoiceCallButton title="Start voice call" onClick={call}/>
-                            <VideoCallButton title="Start video call" />
+                            <button onClick={copyingToClipboard}> copy id</button>
+                            <VideoCallButton title="Start video call" onClick={call}/>
                         </ConversationHeader.Actions>
                     </ConversationHeader>
                     <VideoContainer peers={peers} toggleCamera={vs.current.toggleCamera} toggleAudio={vs.current.toggleAudio}>
